@@ -1,0 +1,71 @@
+DROP DATABASE IF EXISTS `bikini_bottom`;
+CREATE DATABASE `bikini_bottom`;
+USE `bikini_bottom`;
+
+-- Employee demographics
+CREATE TABLE employee_demographics (
+  employee_id INT NOT NULL,
+  first_name VARCHAR(50),
+  last_name VARCHAR(50),
+  age INT,
+  gender VARCHAR(10),
+  birth_date DATE,
+  PRIMARY KEY (employee_id)
+);
+
+-- Employee salaries and roles
+CREATE TABLE employee_salary (
+  employee_id INT NOT NULL,
+  first_name VARCHAR(50) NOT NULL,
+  last_name VARCHAR(50) NOT NULL,
+  occupation VARCHAR(50),
+  salary INT,
+  dept_id INT
+);
+
+-- SpongeBob character demographics (Mr. Krabs removed)
+INSERT INTO employee_demographics (employee_id, first_name, last_name, age, gender, birth_date)
+VALUES
+(1, 'SpongeBob', 'SquarePants', 36, 'Male', '1989-07-14'),
+(3, 'Squidward', 'Tentacles', 49, 'Male', '1976-10-09'),
+(4, 'Patrick', 'Star', 37, 'Male', '1988-02-26'),
+(5, 'Sandy', 'Cheeks', 35, 'Female', '1990-05-12'),
+(6, 'Sheldon', 'Plankton', 82, 'Male', '1943-12-30'),
+(7, 'Karen', 'Plankton', 20, 'Female', '2005-04-04'),
+(8, 'Pearl', 'Krabs', 18, 'Female', '2007-05-01'),
+(9, 'Mrs.', 'Puff', 55, 'Female', '1970-09-25'),
+(10, 'Larry', 'the Lobster', 40, 'Male', '1985-03-20'),
+(11, 'Mermaid', 'Man', 82, 'Male', '1943-01-24'),
+(12, 'Barnacle', 'Boy', 68, 'Male', '1957-06-02');
+
+-- SpongeBob character jobs and salaries
+INSERT INTO employee_salary (employee_id, first_name, last_name, occupation, salary, dept_id)
+VALUES
+(1, 'SpongeBob', 'SquarePants', 'Fry Cook at Krusty Krab', 30000, 1),
+(2, 'Eugene', 'Krabs', 'Owner of Krusty Krab', 120000, 1),
+(3, 'Squidward', 'Tentacles', 'Cashier at Krusty Krab', 28000, 1),
+(4, 'Patrick', 'Star', 'Unemployed / Occasional Worker', 5000, NULL),
+(5, 'Sandy', 'Cheeks', 'Scientist / Inventor', 95000, 3),
+(6, 'Sheldon', 'Plankton', 'Owner of Chum Bucket', 40000, 2),
+(7, 'Karen', 'Plankton', 'AI Assistant & Co-Owner of Chum Bucket', 60000, 2),
+(8, 'Pearl', 'Krabs', 'Krusty Krab Cashier (Part-time)', 15000, 1),
+(9, 'Mrs.', 'Puff', 'Boating School Instructor', 45000, 4),
+(10, 'Larry', 'the Lobster', 'Lifeguard', 42000, 5),
+(11, 'Mermaid', 'Man', 'Retired Superhero', 30000, 6),
+(12, 'Barnacle', 'Boy', 'Retired Superhero Sidekick', 25000, 6);
+
+-- Departments in Bikini Bottom
+CREATE TABLE bikini_bottom_departments (
+  department_id INT NOT NULL AUTO_INCREMENT,
+  department_name varchar(50) NOT NULL,
+  PRIMARY KEY (department_id)
+);
+
+INSERT INTO bikini_bottom_departments (department_name)
+VALUES
+('Krusty Krab'),
+('Chum Bucket'),
+('Science & Research'),
+('Boating School'),
+('Bikini Bottom Lifeguard Association'),
+('Superhero League');
